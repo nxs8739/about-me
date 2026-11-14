@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1014">
+  <meta name="description" content="BEANZ — independent projects, Nintendo GameCube homebrew, retro games, and practical web utilities. Simple by design. Reliable by implementation!">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BEANZ — Projects & About">
+  <meta property="og:description" content="Simple by design. Reliable by implementation! Explore BEANZ GameCube homebrew, retro games, and practical web tools.">
+  <title>BEANZ — About & Projects</title>
+  <style>
+    /* ==========================================================
+       BEANZ PROJECT HUB — EASY-TO-EDIT, SINGLE-FILE WEBSITE
+       No Base64 images, no dependencies, and no JavaScript needed.
+       Everything visible on the page is ordinary HTML or CSS.
+       ========================================================== */
+
+    :root {
+      color-scheme: dark;
+      --bg: #091014;
+      --bg-alt: #0d171b;
+      --surface: #111e22;
+      --surface-light: #16262a;
+      --line: #273a3c;
+      --text: #ebf2ed;
+      --muted: #a7b9b4;
+      --quiet: #718b85;
+      --mint: #bafa91;
+      --mint-dark: #1e4736;
+      --peach: #ffc894;
+      --display: "Trebuchet MS", "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --radius: 18px;
+      --max-width: 1140px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--display);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 740px;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 77% 16%, rgba(88, 148, 96, .16), transparent 42%),
+        radial-gradient(ellipse at 16% 28%, rgba(108, 169, 150, .09), transparent 36%);
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid var(--mint); outline-offset: 5px; border-radius: 5px; }
+    ::selection { background: #bafa91; color: #091014; }
+    .container { width: min(calc(100% - 48px), var(--max-width)); margin-inline: auto; }
+    .skip {
+      position: absolute;
+      top: -100px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--mint);
+      color: #06110b;
+      font-weight: 800;
+    }
+    .skip:focus { top: 16px; }
+
+    /* Navigation */
+    .site-header {
+      border-bottom: 1px solid rgba(178, 214, 190, .12);
+      background: rgba(9, 16, 20, .92);
+    }
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--mint);
+      color: #102019;
+      font: 900 26px/1 var(--mono);
+      box-shadow: 6px 6px 0 rgba(186, 250, 145, .12);
+    }
+    .brand-name { display: block; font-size: 19px; font-weight: 900; line-height: 1.1; letter-spacing: .065em; }
+    .brand-sub { display: block; margin-top: 4px; font: 10px/1 var(--mono); color: var(--muted); letter-spacing: .15em; }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
+    .nav-links a { font-size: 14px; font-weight: 700; color: var(--muted); transition: color .16s; }
+    .nav-links a:hover { color: var(--mint); }
+    .nav-links .nav-github {
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 15px;
+    }
+    .nav-links .nav-github:hover { border-color: var(--mint); }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(310px, .88fr);
+      gap: clamp(40px, 6vw, 90px);
+      align-items: center;
+      padding-block: 108px 115px;
+    }
+    .eyebrow, .section-kicker, .mono-label {
+      font: 700 12px/1.5 var(--mono);
+      color: var(--mint);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; display: inline-block; width: 20px; height: 2px; margin-right: 11px; vertical-align: 4px; background: var(--mint); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin: 20px 0 25px;
+      font-weight: 900;
+      font-size: clamp(50px, 6.8vw, 91px);
+      line-height: 1.03;
+      letter-spacing: -.065em;
+    }
+    .hero h1 .accent { color: var(--mint); }
+    .hero-copy { max-width: 580px; margin-bottom: 30px; color: var(--muted); font-size: clamp(17px, 1.8vw, 19px); }
+    .hero-copy strong { color: var(--text); font-weight: 800; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 47px;
+      padding: 11px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform .16s, border-color .16s, background-color .16s;
+    }
+    .button:hover { transform: translateY(-2px); border-color: var(--mint); }
+    .button-primary { background: var(--mint); color: #122116; border-color: var(--mint); }
+    .button-primary:hover { background: #d1ffaf; }
+    .button-secondary { background: rgba(255, 255, 255, .02); color: var(--text); }
+    .arrow { font-family: var(--mono); font-weight: 700; }
+
+    /* CSS/SVG illustration — no external images */
+    .hero-screen {
+      position: relative;
+      padding: 13px;
+      border-radius: 22px;
+      border: 1px solid #3a4d45;
+      background: linear-gradient(145deg, #1e302e, #101c21 60%, #0d151a);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .38), 0 0 80px rgba(130, 205, 135, .065);
+      transform: rotate(2deg);
+    }
+    .hero-screen::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 16px;
+      pointer-events: none;
+      box-shadow: inset 0 0 32px rgba(0, 0, 0, .20);
+    }
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 8px 14px;
+      color: #91b1a6;
+      font: 11px var(--mono);
+      letter-spacing: .12em;
+    }
+    .led { display: inline-block; width: 8px; height: 8px; margin-right: 9px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 13px rgba(186, 250, 145, .7); }
+    .screen-face {
+      position: relative;
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #354d43;
+      border-radius: 12px;
+      background:
+        linear-gradient(rgba(118, 171, 141, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(118, 171, 141, .045) 1px, transparent 1px),
+        radial-gradient(circle at 50% 48%, #173327, #0c1a1b 65%);
+      background-size: 30px 30px, 30px 30px, auto;
+    }
+    .screen-face svg { width: 82%; max-width: 330px; filter: drop-shadow(0 0 18px rgba(188, 250, 165, .18)); }
+    .screen-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 9px 6px;
+      color: #b4c8bd;
+      font: 12px var(--mono);
+    }
+    .screen-caption b { color: var(--peach); font-weight: 700; }
+    .screen-tag {
+      position: absolute;
+      top: -18px;
+      right: -15px;
+      padding: 9px 13px;
+      border: 1px solid #5d6550;
+      border-radius: 8px;
+      background: #192925;
+      color: var(--peach);
+      font: 700 11px var(--mono);
+      transform: rotate(-6deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    }
+
+    /* Sections */
+    section { scroll-margin-top: 35px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 27px; }
+    .section-head h2 { margin: 6px 0 0; font-size: clamp(35px, 4.2vw, 52px); line-height: 1.15; letter-spacing: -.045em; }
+    .section-note { max-width: 340px; margin: 0; color: var(--muted); font-size: 14px; }
+    .projects { padding-block: 22px 96px; }
+    .featured-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .feature-card, .small-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: border-color .18s, transform .18s, box-shadow .18s;
+    }
+    .feature-card:hover, .small-card:hover { border-color: #679a74; transform: translateY(-4px); box-shadow: 0 16px 35px rgba(0, 0, 0, .18); }
+    .feature-art {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 215px;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .feature-art.crater {
+      background: radial-gradient(circle at 50% 80%, rgba(151, 174, 156, .12), transparent 43%), #0c1618;
+    }
+    .feature-art.monitor {
+      background: radial-gradient(circle at 80% 20%, rgba(186, 250, 145, .11), transparent 48%), #0b1714;
+    }
+    .feature-art svg { max-height: 190px; max-width: 100%; }
+    .art-corner { position: absolute; top: 17px; left: 18px; color: #819c90; font: 10px var(--mono); letter-spacing: .14em; }
+    .feature-body { padding: 26px 27px 28px; }
+    .project-category { display: block; margin-bottom: 10px; color: var(--mint); font: 700 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .feature-body h3 { margin-bottom: 9px; font-size: 27px; line-height: 1.25; letter-spacing: -.03em; }
+    .feature-body p { min-height: 76px; margin: 0 0 20px; color: var(--muted); font-size: 15px; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .tech { color: var(--quiet); font: 12px var(--mono); }
+    .project-link { color: var(--mint); font-weight: 800; font-size: 13px; white-space: nowrap; }
+    .project-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .subhead { margin: 55px 0 20px; font-size: 25px; letter-spacing: -.03em; }
+    .small-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .small-card { padding: 23px; }
+    .small-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 19px;
+      border: 1px solid #3b5e4e;
+      border-radius: 12px;
+      background: #193328;
+      color: var(--mint);
+    }
+    .small-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .small-card h3 { margin-bottom: 7px; font-size: 19px; letter-spacing: -.025em; }
+    .small-card p { min-height: 78px; margin-bottom: 19px; color: var(--muted); font-size: 14px; }
+    .small-card .card-footer { flex-wrap: wrap; }
+
+    /* About */
+    .about-wrap { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-alt); }
+    .about { display: grid; grid-template-columns: 1fr .85fr; gap: clamp(40px, 7vw, 110px); padding-block: 91px; }
+    .about h2 { margin: 9px 0 23px; font-size: clamp(36px, 4vw, 51px); letter-spacing: -.045em; line-height: 1.15; }
+    .about p { color: var(--muted); font-size: 16px; }
+    .about p strong { color: var(--text); }
+    .about-panel { padding: 28px 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .about-panel h3 { margin-bottom: 22px; font-size: 18px; }
+    .principle { display: flex; align-items: flex-start; gap: 14px; }
+    .principle + .principle { margin-top: 21px; }
+    .principle-num { color: var(--mint); font: 700 13px var(--mono); }
+    .principle h4 { margin: -4px 0 3px; font-size: 15px; }
+    .principle p { margin: 0; font-size: 14px; line-height: 1.5; }
+
+    /* Motto */
+    .motto { padding-block: 95px 105px; text-align: center; }
+    .motto-box {
+      position: relative;
+      padding: clamp(40px, 7vw, 78px) 25px;
+      overflow: hidden;
+      border: 1px solid #426449;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 0% 100%, rgba(182, 250, 144, .12), transparent 42%),
+        radial-gradient(circle at 100% 0%, rgba(255, 200, 148, .07), transparent 37%),
+        #10201b;
+    }
+    .motto-box::before, .motto-box::after { content: "+"; position: absolute; color: #63886c; font: 24px var(--mono); }
+    .motto-box::before { top: 21px; left: 23px; }
+    .motto-box::after { right: 23px; bottom: 18px; }
+    .motto h2 { margin: 19px auto 20px; font-size: clamp(35px, 5vw, 64px); line-height: 1.14; letter-spacing: -.052em; }
+    .motto h2 span { color: var(--mint); }
+    .motto p { max-width: 580px; margin: 0 auto; color: var(--muted); font-size: 15px; }
+
+    /* Footer */
+    .site-footer { border-top: 1px solid var(--line); padding-block: 29px; }
+    .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-brand { color: var(--text); font-weight: 900; letter-spacing: .09em; }
+    .footer-brand span { color: var(--quiet); font: 12px var(--mono); letter-spacing: 0; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 700; }
+    .footer-links a:hover { color: var(--mint); }
+
+    @media (max-width: 930px) {
+      .hero { grid-template-columns: 1fr; padding-block: 77px 75px; }
+      .hero-copy { max-width: 650px; }
+      .hero-screen { width: min(100%, 500px); transform: none; }
+      .small-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(calc(100% - 32px), var(--max-width)); }
+      .nav { align-items: flex-start; padding-block: 19px; gap: 15px; flex-direction: column; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 13px; }
+      .nav-links .nav-github { padding: 6px 10px; }
+      .hero { gap: 45px; padding-top: 62px; }
+      h1 { font-size: clamp(43px, 10vw, 65px); }
+      .screen-face { min-height: 240px; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .featured-grid, .small-grid { grid-template-columns: 1fr; }
+      .feature-body p, .small-card p { min-height: 0; }
+      .projects { padding-bottom: 75px; }
+      .about { padding-block: 70px; }
+      .motto { padding-block: 70px; }
+      .footer-content { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="BEANZ — back to top">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>
+          <span class="brand-name">BEANZ</span>
+          <span class="brand-sub">INDEPENDENT PROJECTS</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About me</a>
+        <a href="#philosophy">Philosophy</a>
+        <a class="nav-github" href="https://github.com/nxs8739" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div id="top" class="container">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <div class="eyebrow">Hey there, I'm BEANZ</div>
+          <h1 id="hero-heading">Build it.<br><span class="accent">Keep it simple.</span></h1>
+          <p class="hero-copy">
+            I'm a <strong>self-taught tech enthusiast</strong> with a soft spot for retro gaming,
+            Nintendo GameCube homebrew, and useful little applications. I like software that
+            gets straight to the point — and works the way it's supposed to.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my projects <span class="arrow">↘</span></a>
+            <a class="button button-secondary" href="#about">A little about me <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <div class="hero-screen" aria-label="Retro-style illustration of a spacecraft and cratered asteroid">
+          <div class="screen-tag">MADE WITH CURIOSITY ✳</div>
+          <div class="screen-top"><span><i class="led"></i>BEANZ // ARCADE</span><span>READY_</span></div>
+          <div class="screen-face">
+            <svg viewBox="0 0 340 290" role="img" aria-labelledby="art-title">
+              <title id="art-title">Outlined cratered asteroid and spaceship on a starfield</title>
+              <g fill="#c6f8b4" opacity=".75">
+                <circle cx="45" cy="38" r="1.6"/><circle cx="292" cy="42" r="1.3"/>
+                <circle cx="312" cy="185" r="1.6"/><circle cx="50" cy="224" r="1.4"/>
+                <circle cx="204" cy="253" r="1.6"/><circle cx="151" cy="38" r="1"/>
+                <circle cx="274" cy="267" r="1.2"/><circle cx="31" cy="131" r="1.4"/>
+              </g>
+              <g stroke="#dcf9cc" stroke-width="3" fill="none" stroke-linejoin="round">
+                <path d="M173 52 L203 49 L220 61 L242 58 L258 82 L279 92 L274 116 L285 133 L276 155 L257 165 L248 188 L228 193 L209 210 L191 200 L165 208 L145 194 L119 191 L110 169 L91 156 L97 131 L88 110 L102 92 L109 74 L131 71 L149 53 Z"/>
+                <circle cx="148" cy="111" r="17"/><circle cx="218" cy="128" r="21"/>
+                <circle cx="167" cy="171" r="14"/>
+              </g>
+              <g transform="translate(58,202) rotate(-22)" stroke="#ffc894" stroke-width="3" fill="#ffc894" stroke-linejoin="round">
+                <path d="M0 -27 L-16 22 L0 11 L16 22 Z" fill="none"/>
+                <path d="M-7 22 L0 38 L7 22" stroke-dasharray="3 7" fill="none" opacity=".8"/>
+              </g>
+              <path d="M91 207 L112 198" stroke="#ffc894" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 8"/>
+            </svg>
+          </div>
+          <div class="screen-caption"><span>RETRO ROOTS. MODERN CURIOSITY.</span><b>● LIVE</b></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========================================================
+         PROJECTS: Edit titles, descriptions, and GitHub URLs here.
+         ======================================================== -->
+    <section class="projects container" id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">01 / The projects</div>
+          <h2 id="projects-title">Things I've made.</h2>
+        </div>
+        <p class="section-note">Homebrew experiments, retro games, and everyday tools. Small ideas built to be genuinely useful.</p>
+      </div>
+
+      <div class="featured-grid">
+        <article class="feature-card">
+          <div class="feature-art crater">
+            <span class="art-corner">GC // ARCADE</span>
+            <svg viewBox="0 0 460 185" role="img" aria-label="Cratered asteroids and a triangular spacecraft">
+              <g stroke="#e7f2ec" stroke-width="2.7" fill="none" stroke-linejoin="round">
+                <path d="M155 22 L174 33 L189 29 L205 47 L224 49 L225 68 L238 83 L232 104 L236 123 L218 135 L210 154 L188 157 L176 171 L150 166 L130 173 L113 158 L94 151 L90 132 L74 115 L82 94 L75 75 L94 62 L99 42 L117 40 L130 27 Z"/>
+                <circle cx="129" cy="79" r="14"/><circle cx="183" cy="101" r="19"/><circle cx="138" cy="139" r="11"/>
+                <path d="M358 32 L375 38 L386 56 L399 63 L391 83 L398 101 L381 111 L365 123 L346 116 L329 99 L329 81 L318 67 L329 49 L348 48 Z"/>
+                <circle cx="359" cy="70" r="11"/><circle cx="370" cy="97" r="9"/>
+              </g>
+              <g stroke="#ffc894" stroke-width="2.4" fill="none" stroke-linejoin="round">
+                <path d="M291 137 L274 177 L291 165 L308 177 Z"/>
+                <path d="M291 137 L291 127" stroke-dasharray="3 7"/>
+              </g>
+              <g fill="#d8eee2" opacity=".7">
+                <circle cx="48" cy="35" r="1.3"/><circle cx="274" cy="29" r="1.2"/>
+                <circle cx="419" cy="158" r="1.4"/><circle cx="42" cy="149" r="1.1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="feature-body">
+            <span class="project-category">Nintendo GameCube · Retro arcade</span>
+            <h3>Crater Crackdown</h3>
+            <p>My Asteroids-inspired arcade game for the GameCube. Pilot a tiny ship, blast cratered space rocks, and survive the waves.</p>
+            <div class="card-footer">
+              <span class="tech">C / libogc</span>
+              <a class="project-link" href="https://github.com/nxs8739/crater-crackdown" target="_blank" rel="noopener noreferrer" aria-label="Crater Crackdown on GitHub">View project ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-art monitor">
+            <span class="art-corner">GC // DIAGNOSTICS</span>
+            <svg viewBox="0 0 460 185" role="img" aria-label="Stylized system diagnostics screen">
+              <rect x="70" y="16" width="320" height="153" rx="9" fill="#0b1814" stroke="#527e62" stroke-width="2"/>
+              <path d="M70 45 H390" stroke="#527e62" stroke-width="1.5"/>
+              <circle cx="88" cy="30" r="4" fill="#bafa91"/>
+              <text x="103" y="34" fill="#bafa91" font-size="12" font-family="monospace" font-weight="700">BEANZ SYSTEM MONITOR</text>
+              <text x="90" y="67" fill="#8aa999" font-size="11" font-family="monospace">SYSTEM</text>
+              <text x="277" y="67" fill="#8aa999" font-size="11" font-family="monospace">DEVICES</text>
+              <path d="M90 77 H370" stroke="#314e3f"/>
+              <text x="90" y="100" fill="#d6f3e1" font-size="12" font-family="monospace">MEMORY</text>
+              <rect x="189" y="89" width="168" height="9" rx="2" fill="#234233"/>
+              <rect x="189" y="89" width="110" height="9" rx="2" fill="#bafa91"/>
+              <text x="90" y="125" fill="#d6f3e1" font-size="12" font-family="monospace">VIDEO</text>
+              <text x="191" y="125" fill="#bafa91" font-size="12" font-family="monospace">NTSC</text>
+              <text x="90" y="148" fill="#d6f3e1" font-size="12" font-family="monospace">PORTS</text>
+              <text x="191" y="148" fill="#bafa91" font-size="12" font-family="monospace">CHECK</text>
+            </svg>
+          </div>
+          <div class="feature-body">
+            <span class="project-category">Nintendo GameCube · Utility</span>
+            <h3>GameCube System Monitor</h3>
+            <p>A lightweight diagnostic tool for inspecting system information, memory, video details, controllers, and connected accessories.</p>
+            <div class="card-footer">
+              <span class="tech">C / libogc</span>
+              <a class="project-link" href="https://github.com/nxs8739/BEANZ-GameCube-Monitor" target="_blank" rel="noopener noreferrer" aria-label="BEANZ GameCube System Monitor on GitHub">View project ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="subhead">More from the workbench <span style="color:var(--mint)">↘</span></h3>
+      <div class="small-grid">
+        <article class="small-card">
+          <div class="small-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg>
+          </div>
+          <span class="project-category">Web app</span>
+          <h3>Old School Chatbox</h3>
+          <p>A throwback website chatbox with a lightweight PHP and SQLite backend. No big database server needed.</p>
+          <div class="card-footer"><span class="tech">PHP / SQLite</span><a class="project-link" href="https://github.com/nxs8739/old-school-chatbox" target="_blank" rel="noopener noreferrer" aria-label="Old School Chatbox on GitHub">GitHub ↗</a></div>
+        </article>
+
+        <article class="small-card">
+          <div class="small-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 4v11m0 0-4-4m4 4 4-4"/><path d="M14 7h6M14 11h6M4 19h16"/></svg>
+          </div>
+          <span class="project-category">Web utility</span>
+          <h3>YT2MP3</h3>
+          <p>A straightforward web interface for extracting MP3 audio from video links using yt-dlp and FFmpeg.</p>
+          <div class="card-footer"><span class="tech">Python / Flask</span><a class="project-link" href="https://github.com/nxs8739/yt2mp3" target="_blank" rel="noopener noreferrer" aria-label="YT2MP3 on GitHub">GitHub ↗</a></div>
+        </article>
+
+        <article class="small-card">
+          <div class="small-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3M12 14v3"/></svg>
+          </div>
+          <span class="project-category">Security utility</span>
+          <h3>SPG</h3>
+          <p>Simple Password Generator. Generate strong random passwords right in your browser, with no account or backend.</p>
+          <div class="card-footer"><span class="tech">Web Crypto API</span><a class="project-link" href="https://github.com/nxs8739/spg" target="_blank" rel="noopener noreferrer" aria-label="SPG on GitHub">GitHub ↗</a></div>
+        </article>
+
+        <article class="small-card">
+          <div class="small-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 17V9M9 17V5M14 17v-7M19 17V3"/><path d="M3 21h18"/></svg>
+          </div>
+          <span class="project-category">Security utility</span>
+          <h3>SPSM</h3>
+          <p>Simple Password Strength Meter. Check password strength and look for known exposure using privacy-conscious checks.</p>
+          <div class="card-footer"><span class="tech">Browser-based</span><a class="project-link" href="https://github.com/nxs8739/spsm" target="_blank" rel="noopener noreferrer" aria-label="SPSM on GitHub">GitHub ↗</a></div>
+        </article>
+
+        <article class="small-card">
+          <div class="small-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
+          </div>
+          <span class="project-category">Retro game</span>
+          <h3>Snake Web</h3>
+          <p>A terminal-style Snake game for the web, bringing a little old-school fun into the browser.</p>
+          <div class="card-footer"><span class="tech">Python / Flask</span><a class="project-link" href="https://github.com/nxs8739/snake-web" target="_blank" rel="noopener noreferrer" aria-label="Snake Web on GitHub">GitHub ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT ME: You can freely rewrite these paragraphs in Kate. -->
+    <div class="about-wrap">
+      <section class="container about" id="about" aria-labelledby="about-title">
+        <div>
+          <div class="section-kicker">02 / Behind the projects</div>
+          <h2 id="about-title">A little about me.</h2>
+          <p>
+            Hey, I'm <strong>BEANZ</strong>. I'm a self-taught technology enthusiast who's
+            always enjoyed figuring out how things work — from computers and networking
+            to old game consoles and the software that runs on them.
+          </p>
+          <p>
+            I learn by experimenting, testing, and building things I actually want to use.
+            Some projects are practical tools. Others are a way to revisit the games and
+            technology I grew up with.
+          </p>
+          <p>
+            I have a particular appreciation for simple programs that keep doing their job
+            years later. If something can be straightforward, lightweight, and dependable,
+            that's usually the direction I want to take it.
+          </p>
+          <a class="project-link" href="https://github.com/nxs8739" target="_blank" rel="noopener noreferrer">Find me on GitHub ↗</a>
+        </div>
+        <aside class="about-panel" aria-label="What guides my projects">
+          <h3>What matters to me</h3>
+          <div class="principle">
+            <span class="principle-num">01</span>
+            <div><h4>Useful over flashy</h4><p>Make the core experience good before adding anything unnecessary.</p></div>
+          </div>
+          <div class="principle">
+            <span class="principle-num">02</span>
+            <div><h4>Keep things understandable</h4><p>Simple interfaces, clear purpose, and as few moving parts as possible.</p></div>
+          </div>
+          <div class="principle">
+            <span class="principle-num">03</span>
+            <div><h4>Reliability matters</h4><p>Test how the software actually behaves — especially on the hardware it's meant for.</p></div>
+          </div>
+          <div class="principle">
+            <span class="principle-num">04</span>
+            <div><h4>Preserve the good stuff</h4><p>Keep useful software and old-school experiences accessible.</p></div>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <section class="motto container" id="philosophy" aria-labelledby="philosophy-title">
+      <div class="motto-box">
+        <div class="section-kicker">03 / The BEANZ philosophy</div>
+        <h2 id="philosophy-title">Simple by design.<br><span>Reliable by implementation!</span></h2>
+        <p>Good software doesn't need to be complicated. It needs a clear purpose, thoughtful decisions, and the reliability to back them up.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">BEANZ <span>— Built with curiosity. © 2026</span></div>
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="https://github.com/nxs8739" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
