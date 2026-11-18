@@ -229,7 +229,7 @@
     .section-head h2 { margin: 6px 0 0; font-size: clamp(35px, 4.2vw, 52px); line-height: 1.15; letter-spacing: -.045em; }
     .section-note { max-width: 340px; margin: 0; color: var(--muted); font-size: 14px; }
     .projects { padding-block: 22px 96px; }
-    .featured-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .featured-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
     .feature-card, .small-card {
       min-width: 0;
       overflow: hidden;
@@ -254,6 +254,9 @@
     }
     .feature-art.monitor {
       background: radial-gradient(circle at 80% 20%, rgba(186, 250, 145, .11), transparent 48%), #0b1714;
+    }
+    .feature-art.avi {
+      background: radial-gradient(circle at 80% 25%, rgba(154, 113, 245, .21), transparent 48%), #111222;
     }
     .feature-art svg { max-height: 190px; max-width: 100%; }
     .art-corner { position: absolute; top: 17px; left: 18px; color: #819c90; font: 10px var(--mono); letter-spacing: .14em; }
@@ -325,6 +328,10 @@
     .footer-brand span { color: var(--quiet); font: 12px var(--mono); letter-spacing: 0; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 700; }
     .footer-links a:hover { color: var(--mint); }
+
+    @media (max-width: 1100px) {
+      .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
 
     @media (max-width: 930px) {
       .hero { grid-template-columns: 1fr; padding-block: 77px 75px; }
@@ -494,6 +501,50 @@
             <div class="card-footer">
               <span class="tech">C / libogc</span>
               <a class="project-link" href="https://github.com/nxs8739/BEANZ-GameCube-Monitor" target="_blank" rel="noopener noreferrer" aria-label="BEANZ GameCube System Monitor on GitHub">View project ↗</a>
+            </div>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-art avi">
+            <span class="art-corner">GC // MEDIA</span>
+            <svg viewBox="0 0 460 185" role="img" aria-label="Stylized film reels, video screen, and playback icon for BEANZ AVI Player">
+              <defs>
+                <linearGradient id="avi-screen-glow" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#34235d"/>
+                  <stop offset="1" stop-color="#131b32"/>
+                </linearGradient>
+              </defs>
+              <rect x="88" y="32" width="283" height="132" rx="11" fill="url(#avi-screen-glow)" stroke="#a187e9" stroke-width="2.5"/>
+              <rect x="100" y="44" width="259" height="108" rx="5" fill="#0d1425" stroke="#4e437f" stroke-width="1.5"/>
+              <path d="M115 57 H345" stroke="#6f63ac" stroke-width="1.5" opacity=".7"/>
+              <circle cx="119" cy="51" r="2.6" fill="#bafa91"/>
+              <circle cx="130" cy="51" r="2.6" fill="#ffc894"/>
+              <circle cx="141" cy="51" r="2.6" fill="#9c8ad8"/>
+              <g fill="none" stroke="#c4b6fd" stroke-width="2.3">
+                <circle cx="174" cy="104" r="32"/>
+                <circle cx="174" cy="104" r="7"/>
+                <circle cx="174" cy="84" r="6"/><circle cx="194" cy="104" r="6"/>
+                <circle cx="174" cy="124" r="6"/><circle cx="154" cy="104" r="6"/>
+                <path d="M208 104 H231" stroke-dasharray="4 5"/>
+              </g>
+              <path d="M264 83 L264 125 L304 104 Z" fill="#bafa91"/>
+              <path d="M118 137 H340" stroke="#655495" stroke-width="2"/>
+              <path d="M118 137 H272" stroke="#bafa91" stroke-width="2.5"/>
+              <circle cx="272" cy="137" r="4" fill="#bafa91"/>
+              <g stroke="#7d6aaf" stroke-width="2" opacity=".8" fill="none">
+                <path d="M70 76 H88 M371 118 H394"/>
+                <rect x="61" y="67" width="9" height="9" rx="1"/>
+                <rect x="394" y="118" width="9" height="9" rx="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="feature-body">
+            <span class="project-category">Nintendo GameCube · Media player</span>
+            <h3>BEANZ AVI Player</h3>
+            <p>A focused MJPEG movie player with PCM audio, AVIX continuation, and SD2SP2 / SD Gecko support on original GameCube hardware.</p>
+            <div class="card-footer">
+              <span class="tech">C / libogc</span>
+              <a class="project-link" href="https://github.com/nxs8739/beanz-avi-player" target="_blank" rel="noopener noreferrer" aria-label="BEANZ AVI Player on GitHub">View project ↗</a>
             </div>
           </div>
         </article>
